@@ -7,10 +7,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import edu.nd.pmcburne.hwapp.one.ui.ScoresScreen
+import edu.nd.pmcburne.hwapp.one.ui.ScoresViewModel
 import edu.nd.pmcburne.hwapp.one.ui.theme.HWStarterRepoTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,28 +22,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             HWStarterRepoTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    val viewModel: ScoresViewModel = viewModel()
+                    val uiState by viewModel.uiState.collectAsState()
+
+                    ScoresScreen(
+                        uiState = uiState,
+                        onDateChanged = viewModel::onDateChanged,
+                        onGenderChanged = viewModel::onGenderChanged,
+                        onRefresh = viewModel::refresh,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    HWStarterRepoTheme {
-        Greeting("Android")
     }
 }

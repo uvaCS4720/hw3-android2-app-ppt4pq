@@ -2,10 +2,16 @@ package edu.nd.pmcburne.hwapp.one.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Press Box — dark scoreboard palette
+val SlateBlack = Color(0xFF0F1118)
+val SurfaceDark = Color(0xFF1A1D27)
+val SurfaceVariant = Color(0xFF252836)
+val AmberGold = Color(0xFFE07838)
+val AmberGoldDim = Color(0xFFB85E2A)
+val LiveRed = Color(0xFFD4443B)
+val WinnerGreen = Color(0xFF4CAF50)
+val TextPrimary = Color(0xFFF0F0F5)
+val TextSecondary = Color(0xFF8B8FA3)
+val TextDimmed = Color(0xFF5A5E72)
+val OfflineBannerBg = Color(0xFF2A1F10)
+val CardStroke = Color(0xFF2E3140)

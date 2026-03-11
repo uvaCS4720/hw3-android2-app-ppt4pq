@@ -1,0 +1,76 @@
+Basketball Scores
+Github Classroom: https://classroom.github.com/a/NYuLn2p4Links to an external site. 
+
+In this app, you will be using an API to access college basketball scores from ESPN. Specifically, you can use a link like the following:
+
+https://ncaa-api.henrygd.me/scoreboard/basketball-men/d1Links to an external site.
+
+And this gives you JSON data for games.
+
+What to show for each game
+Part of this assignment is exploring and parsing the data yourself, so I won't say exactly which fields to use or how to college data, but for this app, you will specifically want to find: 
+
+The name of both teams (including which team is the "home" team and "away" team.)
+Whether or not the game is upcoming, currently being played, or is finished
+The score of both teams if the game is currently being played or finished. If the game is upcoming, you should find the "start time"
+The current period and time-remaining if the game is currently in progress
+If the game is finished, you should display "Final" instead of the time remaining
+Note that men's college basketball uses two 20-minute halves, but women's college basketball uses four 10-minute quarters.
+The winner of the game, if the game is final
+UI Features:
+Your app can be implemented as a single screen (or multiple screens if you wish), and should allow the following: 
+
+A Date Picker for selecting the date of games to see (should initially be set to today's date)
+Some means to toggle between Men's and Women's college basketball.
+A list of games, showing the information above.
+Some kind of means to "refresh" manually. This can be done either with a button, or using the "pull-to-refresh" Android feature. Useful resource for the latter is: https://canlioya.medium.com/customise-pull-to-refresh-on-android-with-jetpack-compose-24a7119a4b94Links to an external site.
+Some type of "loading" circle that is visible whenever you start a remote API call to get scores.
+Whenever I start the screen, change the date, toggle men's and women's, or refresh while an internet connection is active, you should connect to the API, download data, and update the  local database (more on this in the next section) and the UI.
+
+Offline mode and persistence
+Your app must also support an offline mode. If your device is not connected to the internet, you should still be able to view any scores that you have previously received.
+
+For instance, if I get all scores for Women's basketball on February 15 while connected to the internet, and then later I lose internet access, then I should still be able to see the scores I previously downloaded (though obviously, you won't be able to "update" the scores without an internet access). This should be persistent, meaning all scores that you get from the API should be downloaded and stored in a SQLite Room Database.
+
+Your database should also be updated when the API gives you new scores. For instance, if you get an in-progress score of UVA vs Virginia Tech 37-41 with 17:30 remaining in the second half, then later on a refresh or update, the score is 45-44 with 13:47 remaining in the second half, then you should overwrite the previous score in your database and update to the most up-to-date score.
+
+API Usage
+As a basic guide to this API, the URL breaks down as follows: 
+
+https://ncaa-api.henrygd.me/scoreboard/basketball-Links to an external site.[gender]Links to an external site./d1/Links to an external site.yyyyLinks to an external site./Links to an external site.mmLinks to an external site./Links to an external site.ddLinks to an external site.
+
+Where [gender] is either men or women, and the date is expressed as a 4 digit year, two digit month, 2 digit day.
+
+For instance, to get the men's basketball scores for February 17, 2026, you would use:
+
+https://ncaa-api.henrygd.me/scoreboard/basketball-men/d1/2026/02/17Links to an external site.
+
+Or for the women's scores for January 30, 2026, you would use:
+
+https://ncaa-api.henrygd.me/scoreboard/basketball-women/d1/2026/01/30Links to an external site.
+
+Note that this specific API does not update extremely rapidly, so if you refresh quickly during a game, you may not see the scores change.
+
+ 
+
+Submission
+Submit your Github repository to Gradescope by the deadline.
+
+Grading
+6 points: App launches properly into the app
+
+10 points: Date selection works, including default date as today
+
+6 points: Selection of men's women's games
+
+10 points: Correct listing of games with specified details
+
+6 points: Means to refresh the content
+
+6 points: Loading indicator when you start remote API call
+
+10 points: Offline mode and persistence
+
+6 points: App does not crash or lose data on rotate or other configuration changes.
+
+15 points: Design / Style / Appearance / Usability
